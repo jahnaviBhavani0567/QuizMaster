@@ -12,7 +12,7 @@ app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -263,10 +263,10 @@ app.get("/", (req, res) => {
   );
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(
-    `QuizMaster server running on http://localhost:${PORT}`
+    `QuizMaster server running on port ${PORT}`
   );
 });
